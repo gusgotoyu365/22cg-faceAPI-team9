@@ -1,7 +1,6 @@
 let img, parts;
 let options = {withLandmarks: true, withDescriptors: false};
 let mouth = [], eyebrowL = [], eyebrowR = [];
-
 function preload() {
   img = loadImage('face.png');
 }
@@ -14,14 +13,15 @@ function setup() {
     eyebrowL[i] = [];
     eyebrowR[i] = [];
   }
-  createCanvas(img.width*2, img.height);
+  createCanvas(img.width*2, img.height+55);
   faceapi = ml5.faceApi(options, modelReady);
   background(255);
   image(img, 0, 0);
   picker1 = createColorPicker('#FF6464');
   picker2 = createColorPicker('#FFC8C8');
-  picker1.position(0,height);
-  picker2.position(0,height+30);
+  picker1.position(90,height-55);
+  picker2.position(90,height-27);
+  textSize(18);
   //image(img, img.width, 0);    
 }
 
@@ -153,4 +153,12 @@ function draw() {
     vertex(eyebrowR[i][0], eyebrowR[i][1]);
   }
   endShape();
+  
+  //글자 만들기
+  noStroke();
+  fill(0);
+  rect(0,img.height,img.width,img.height+55);
+  fill(255);
+  text('윗 입술',0,height-32);
+  text('아래 입술',0,height-7);
 }
