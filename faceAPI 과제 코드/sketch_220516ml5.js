@@ -23,6 +23,7 @@ function setup() {
   for(let i=0; i<10; i++) {
     nose[i] = [];
   }
+  
   createCanvas(img.width*2, img.height+55);
   faceapi = ml5.faceApi(options, modelReady);
   background(255);
@@ -92,7 +93,7 @@ function drawFace() {
 }
 
 function draw() { 
-  drawFaceinScreen(200,0);
+  drawFaceinScreen(0);
   //글자 만들기
   noStroke();
   fill(0);
@@ -104,7 +105,7 @@ function draw() {
   translate(img.width,0);
   fill(255);
   rect(0, 0, img.width, img.height);
-  drawFaceinScreen(0,1);
+  drawFaceinScreen(1);
   tint(230, alphaG);
   image(imgG, 42,0,img.width-80, img.height-59);
 }
@@ -116,15 +117,15 @@ function goldgo() {
   } else if (alphaG == 80) {
     alphaG = 0;
   }
+  //image(imgG, 42,0,img.width-80, img.height-59);
 }
 
-function drawFaceinScreen(color,s) {
+function drawFaceinScreen(s) {
   //눈썹 그리기
-  if (s==0) {
-    stroke(0,slider.value());
+  if (s==1) {
+    stroke(0,0,0,slider.value());
   } else {
-    //stroke(0);
-    stroke(0,slider.value());
+    stroke('rgb(74,255,154)');
   }
   noFill();
   beginShape();
@@ -143,8 +144,8 @@ function drawFaceinScreen(color,s) {
   //눈 그리기
   push();
   if (s==0) {
-    fill(200);
-    stroke(0);
+    fill(255);
+    stroke('rgb(74,255,154)');
   }
   beginShape();
   for(let i=0; i<5; i++){
