@@ -23,7 +23,6 @@ function setup() {
   for(let i=0; i<10; i++) {
     nose[i] = [];
   }
-  
   createCanvas(img.width*2, img.height+55);
   faceapi = ml5.faceApi(options, modelReady);
   background(255);
@@ -117,7 +116,6 @@ function goldgo() {
   } else if (alphaG == 80) {
     alphaG = 0;
   }
-  //image(imgG, 42,0,img.width-80, img.height-59);
 }
 
 function drawFaceinScreen(color,s) {
